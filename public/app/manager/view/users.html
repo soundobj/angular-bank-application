@@ -1,0 +1,21 @@
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <thead>
+            <th>Action</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+        </thead>
+        <tr ng-repeat="user in usersCtrl.users">
+            <td>
+                <a ui-sref=".account-management({ userID:user.id })"
+                   class="btn btn-default">Manage Accounts</a>
+            </td>
+            <td>{{user.name}}</td>
+            <td>{{user.phone}}</td>
+            <td>{{user.email}}</td>
+        </tr>
+    </table>
+</div>
+
+<div ui-view></div>

@@ -1,0 +1,16 @@
+<h3>Managing user {{ accCtrl.user.name }}</h3>
+<div class="col-md-6">
+    <h4 ng-show="accCtrl.availableProducts">Products Available</h4>
+    <span ng-repeat="product in accCtrl.availableProducts">
+        <a ui-sref=".create-account({ accID:product.id })"
+           class="btn btn-default">Open {{ product.name }}</a>
+    </span>
+</div>
+<div class="col-md-6">
+    <h4 ng-show="accCtrl.userAccounts">View Accounts</h4>
+    <span ng-repeat="account in accCtrl.userAccounts">
+        <a  ui-sref=".view-account({ accID:account.id })"
+            class="btn btn-default">View {{ account.name }}</a>
+    </span>
+</div>
+<div ui-view></div>

@@ -1,0 +1,40 @@
+<div class="col-md-12">
+    <h4> Opening account {{accountCtrl.product.name}}</h4>
+    <form name="account" ng-submit="accountCtrl.openAccount()" novalidate>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <th>Name</th>
+                    <th>Curreny</th>
+                    <th>Overdraft</th>
+                    <th>Opening Balance</th>
+                </thead>
+                <tr>
+                    <td>{{accountCtrl.product.name}}</td>
+                    <td>{{accountCtrl.product.currency}}</td>
+                    <td>{{accountCtrl.product.overdraft}}</td>
+                    <td>
+                        <div ng-class="{ 'has-error' : account.balance.$invalid && !account.balance.$pristine }">
+                            <label for="balance">Balance</label>
+                            <input type="text"
+                                   id="balance"
+                                   name="balance"
+                                   class="form-control"
+                                   ng-model="accountCtrl.balance"
+                                   ng-pattern="accountCtrl.onlyDigits"
+                                   required>
+                            <p ng-show="account.balance.$error.pattern"
+                               class="help-block">Balance must be a positive number</p>
+
+                            <p ng-show="account.balance.$invalid && !account.balance.$pristine"
+                               class="help-block">Balance is required.</p>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <button type="submit" class="btn btn-primary" ng-disabled="account.$invalid">Save</button>
+        </div>
+    </form>
+</div>
+
+<div ui-view></div>

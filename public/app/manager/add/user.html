@@ -1,0 +1,53 @@
+<div class="col-sm-6">
+<form name="user" ng-submit="userCtrl.addUser()" novalidate>
+
+    <div ng-class="{ 'has-error' : user.name.$invalid && !user.name.$pristine }">
+        <label for="name">Name</label>
+        <input type="text"
+               id="name"
+               name="name"
+               class="form-control"
+               ng-model="userCtrl.user.name"
+               ng-pattern="userCtrl.onlyWords"
+               required>
+        <p ng-show="user.name.$error.pattern"
+           class="help-block">Name must not contain numbers!</p>
+
+        <p ng-show="user.name.$invalid && !user.name.$pristine"
+           class="help-block">Name is required.</p>
+    </div>
+
+    <div ng-class="{ 'has-error' : user.phone.$invalid && !user.phone.$pristine }">
+        <label for="phone">Phone</label>
+        <input type="text"
+               id="phone"
+               name="phone"
+               class="form-control"
+               ng-model="userCtrl.user.phone"
+               ng-pattern="userCtrl.onlyDigits"
+               required>
+        <p ng-show="user.phone.$error.pattern"
+           class="help-block">Phone must not contain letters!</p>
+
+        <p ng-show="user.phone.$invalid && !user.phone.$pristine"
+           class="help-block">Phone is required.</p>
+    </div>
+
+    <div ng-class="{ 'has-error' : user.email.$invalid && !user.email.$pristine }">
+        <label for="email">Email</label>
+        <input type="email"
+               id="email"
+               name="email"
+               class="form-control"
+               ng-model="userCtrl.user.email">
+        <p ng-show="user.email.$error.email"
+           class="help-block">Email must be valid!</p>
+    </div>
+
+    <div class="form-group pull-right">
+        <button type="submit" class="btn btn-primary" ng-disabled="user.$invalid">Save</button>
+    </div>
+</form>
+</div>
+
+<div ui-view></div>

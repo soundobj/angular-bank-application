@@ -1,0 +1,17 @@
+node_modules
+bower_components
+.idea/.name
+
+.idea/misc.xml
+
+.idea/modules.xml
+
+.idea/rechannel.iml
+
+.idea/vcs.xml
+
+.idea/workspace.xml
+
+public/app/api/accounts.json
+
+.gitignore.swp

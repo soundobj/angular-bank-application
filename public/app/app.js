@@ -3,12 +3,13 @@ var RootCtrl = (function () {
         this.brand = "Angular";
         this.navStates = [
             { state: "root.manager", title: "Manage Bank Customers" },
+            { state: "root.login", title: "User Services" },
         ];
     }
     return RootCtrl;
 })();
 
-angular.module("Bank", ["ui.router","ngStorage"]).controller("RootCtrl", RootCtrl)
+angular.module("Bank", ["ui.router","ngStorage",'ui.bootstrap']).controller("RootCtrl", RootCtrl)
     .config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider.state({
         name: "root",

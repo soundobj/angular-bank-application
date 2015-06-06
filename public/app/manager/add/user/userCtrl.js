@@ -23,7 +23,7 @@ var Bank;
                     url: "/add",
                     controller: "UserCtrl",
                     controllerAs: "userCtrl",
-                    templateUrl: "manager/add/user.html"
+                    templateUrl: "manager/add/user/user.html"
             });
         });
     })(User = Bank.User || (Bank.User = {}));

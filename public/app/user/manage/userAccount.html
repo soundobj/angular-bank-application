@@ -1,0 +1,16 @@
+<div class="user-functions">
+<h3>Managing {{ mgAccCtrl.account.name }} - Current Balance: {{ mgAccCtrl.account.balance }}</h3>
+
+<a ui-sref=".add({ accID:mgAccCtrl.account.id, userID: mgAccCtrl.userID })"
+    class="btn btn-default">Add Funds</a>
+
+<a ui-sref=".payment({ accID:mgAccCtrl.account.id, userID: mgAccCtrl.userID })"
+    class="btn btn-default">Send Payment</a>
+
+<a ui-sref=".statement({ accID:mgAccCtrl.account.id, userID: mgAccCtrl.userID})"
+    class="btn btn-default">View Transactions</a>
+
+<a ui-sref=".reset({ accID:mgAccCtrl.account.id, userID: mgAccCtrl.userID })"
+    class="btn btn-default">Reset Account</a>
+</div>
+<div ui-view></div>

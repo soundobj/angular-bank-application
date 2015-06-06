@@ -1,9 +1,9 @@
 var Bank;
 (function (Bank) {
-    var ManageUser;
-    (function (ManageUser) {
-        var ManageUserCtrl = (function () {
-            function ManageUserCtrl($state,User,Account) { // errors
+    var UserAccounts;
+    (function (UserAccounts) {
+        var UserAccountsCtrl = (function () {
+            function UserAccountsCtrl($state,User,Account) { // errors
                 var _this = this;
 
                 _this.user = User.getUser($state.params.userID);
@@ -23,18 +23,18 @@ var Bank;
                 _this.prepareOptions();
 
             }
-            return ManageUserCtrl;
+            return UserAccountsCtrl;
         })();
-        ManageUser.ManageUserCtrl = ManageUserCtrl;
-        angular.module("Bank").controller("ManageUserCtrl",
-            ['$state','User','Account',ManageUserCtrl]).config(function ($stateProvider) {
+        UserAccounts.UserAccountsCtrl = UserAccountsCtrl;
+        angular.module("Bank").controller("UserAccountsCtrl",
+            ['$state','User','Account',UserAccountsCtrl]).config(function ($stateProvider) {
                 $stateProvider.state({
-                    name: "root.manager.view-users.account-management",
-                    url: "/manage-accounts/user/:userID",
-                    controller: "ManageUserCtrl",
+                    name: "root.manager.users.account-management",
+                    url: "/:userID",
+                    controller: "UserAccountsCtrl",
                     controllerAs: "accCtrl",
-                    templateUrl: "manager/manage/manageUser.html"
+                    templateUrl: "manager/manage/userAccounts.html"
                 });
         });
-    })(ManageUser = Bank.ManageUser || (Bank.ManageUser = {}));
+    })(UserAccounts = Bank.UserAccounts || (Bank.UserAccounts = {}));
 })(Bank || (Bank = {}));

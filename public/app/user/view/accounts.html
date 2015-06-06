@@ -1,0 +1,13 @@
+<div class="container">
+    <h3>Hello {{ accountsCtrl.user.name }}</h3>
+    <h4 ng-show="accountsCtrl.hasAccounts">Products Available</h4>
+    <span ng-repeat="account in accountsCtrl.accounts">
+       <a  ui-sref=".manage({ accID:account.id })"
+           class="btn btn-default">Manage {{ account.name }}
+       </a>
+    </span>
+    <div class="row" ng-show="!accountsCtrl.hasAccounts">
+        You don't have any active products, please contact your branch manager
+    </div>
+    <div ui-view></div>
+</div>

@@ -1,0 +1,18 @@
+<div>
+    <form name="add" ng-submit="mgAccCtrl.addFunds()" novalidate>
+        <div ng-class="{ 'has-error' : add.funds.$invalid && !add.funds.$pristine }">
+            <input type="text"
+                   id="funds"
+                   name="funds"
+                   ng-model="mgAccCtrl.funds"
+                   ng-pattern="mgAccCtrl.onlyDigits"
+                   required>
+            <p ng-show="add.funds.$error.pattern"
+            class="help-block">Funds must be number and positive</p>
+
+            <p ng-show="add.funds.$invalid && !add.funds.$pristine"
+            class="help-block">Funds is required.</p>
+        </div>
+        <button type="submit" class="btn btn-primary" ng-disabled="add.$invalid">Add</button>
+    </form>
+</div>

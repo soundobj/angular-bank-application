@@ -1,4 +1,4 @@
-angular.module("Bank").factory("User", ['$localStorage','$filter', function($localStorage,$filter) {
+angular.module("Bank").factory("User", ['$localStorage','Account', function($localStorage,Account) {
 
     var _storage = $localStorage;
 
@@ -8,10 +8,17 @@ angular.module("Bank").factory("User", ['$localStorage','$filter', function($loc
 
     return {
 
+        setStorage : function (storage) {
+            _storage = storage;
+        },
+
+        getStorage : function() {
+            return _storage;
+        },
+
         saveOrUpdate : function (user) {
             var storedUser = this.findUserByName(user.name);
             if(storedUser){
-
                 user.id = storedUser.id;
                 _storage.users[user.id] = user;
             } else {
@@ -22,13 +29,7 @@ angular.module("Bank").factory("User", ['$localStorage','$filter', function($loc
         },
 
         findUserByName : function(userName) {
-            var user = _storage.users.filter(function(el){
-                if(el.name === this.userName) {
-
-                    return true;
-                }
-            },{userName: userName});
-            return user[0];
+            return Account.filterByPropertyValue(_storage.users,"name",userName);
         },
 
         getUsers : function () {
@@ -37,30 +38,6 @@ angular.module("Bank").factory("User", ['$localStorage','$filter', function($loc
 
         getUser : function(id) {
           return _storage.users[id];
-        },
-
-        getUserAccounts : function(user) {
-
-        },
-
-        addUserAccount : function (user,account) {
-
-        },
-
-        sendPayment : function(user,account) {
-
-        },
-
-        viewAccountHistory : function(user,account) {
-
-        },
-
-        deleteUser : function(user) {
-
-        },
-
-        transferFunds: function(account,account) {
-
         }
     }
 }]);

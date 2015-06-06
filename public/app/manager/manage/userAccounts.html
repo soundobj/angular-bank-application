@@ -7,10 +7,10 @@
     </span>
 </div>
 <div class="col-md-6">
-    <h4 ng-show="accCtrl.userAccounts">View Accounts</h4>
+    <h4 ng-show="accCtrl.userAccounts">Existing Products</h4>
     <span ng-repeat="account in accCtrl.userAccounts">
-        <a  ui-sref=".view-account({ accID:account.id })"
-            class="btn btn-default">View {{ account.name }}</a>
+        <p>{{ account.name }} </p>
     </span>
 </div>
+
 <div ui-view></div>

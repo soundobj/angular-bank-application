@@ -1,0 +1,32 @@
+<div>
+    <form name="payment" ng-submit="mgAccCtrl.doPayment()" novalidate>
+        <div class="form-inline"
+             ng-class="{ 'has-error' : payment.recipient.$invalid && !payment.recipient.$pristine }">
+            <label for="recipient">Recipient</label>
+            <input type="text"
+                   id="recipient"
+                   name="recipient"
+                   ng-model="mgAccCtrl.recipient"
+                   required>
+            <p ng-show="payment.recipient.$invalid && !payment.recipient.$pristine"
+               class="help-block">recipient is required.</p>
+
+            <label for="amount">Amount</label>
+            <input type="text"
+                   id="amount"
+                   name="amount"
+                   ng-model="mgAccCtrl.paymentAmount"
+                   ng-pattern="mgAccCtrl.onlyDigits"
+                    required>
+            <p ng-show="payment.amount.$error.pattern"
+               class="help-block">payment must be number and positive</p>
+
+            <p ng-show="payment.amount.$invalid && !payment.amount.$pristine"
+               class="help-block">payment is required.</p>
+        </div>
+        <button type="submit" class="btn btn-primary" ng-disabled="payment.$invalid">Send</button>
+        <div ng-show="mgAccCtrl.insufficientFunds === true">
+            Sorry, there are insufficient funds in your account to perform this transaction.
+        </div>
+    </form>
+</div>

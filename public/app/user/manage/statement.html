@@ -1,0 +1,29 @@
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <thead>
+        <th>Event Type</th>
+        <th>Date</th>
+        <th>Original Balance</th>
+        <th>Amount</th>
+        <th>Final Balance</th>
+        </thead>
+        <tr ng-repeat="event in mgAccCtrl.account.events.slice(
+            ( (mgAccCtrl.currentPage - 1) * mgAccCtrl.itemsPerPage),
+            ( mgAccCtrl.currentPage * mgAccCtrl.itemsPerPage)
+            )">
+            <td>{{event.type}} <span ng-show="event.recipient">({{ event.recipient }})</span></td>
+            <td>{{event.timestamp | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+            <td>{{event.originalBalance}}</td>
+            <td>{{event.amount}}</td>
+            <td>{{event.finalBalance}}</td>
+        </tr>
+    </table>
+    <pagination
+        total-items="mgAccCtrl.totalItems"
+        ng-model="mgAccCtrl.currentPage"
+        ng-change="mgAccCtrl.pageChanged()"
+        items-per-page="5">
+    </pagination>
+</div>
+
+<div ui-view></div>

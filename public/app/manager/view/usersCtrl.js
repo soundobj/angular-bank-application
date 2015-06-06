@@ -5,7 +5,6 @@ var Bank;
         var UsersCtrl = (function () {
             function UsersCtrl(User) {
                 var _this = this;
-
                 _this.users = User.getUsers();
             }
             return UsersCtrl;
@@ -13,8 +12,8 @@ var Bank;
         Users.UsersCtrl = UsersCtrl;
         angular.module("Bank").controller("UsersCtrl", UsersCtrl).config(function ($stateProvider) {
             $stateProvider.state({
-                name: "root.manager.view-users",
-                url: "/view-users",
+                name: "root.manager.users",
+                url: "/users",
                 controller: "UsersCtrl",
                 controllerAs: "usersCtrl",
                 templateUrl: "manager/view/users.html"

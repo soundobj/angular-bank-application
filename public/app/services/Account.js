@@ -1,8 +1,6 @@
 angular.module("Bank").factory("Account",
     ['$localStorage', function($localStorage) {
-         //['$http','$filter','User','$localStorage', function($http,$filter,User,$localStorage) {
-
-
+        
     var _storage = $localStorage;
 
     _storage.$default({
